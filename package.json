@@ -10,6 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.7",
+    "@react-native-seoul/masonry-list": "^1.0.7",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.0.7",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -18,6 +20,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.3.1",
     "react-native-screens": "^3.6.0",
+    "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.4",
     "redux": "^4.1.1",
