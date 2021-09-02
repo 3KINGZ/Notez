@@ -1,5 +1,5 @@
-import { getObjectValue } from "./../utils/storage/get";
 import * as types from "./types";
+import { getObjectValue } from "./../utils/storage/get";
 
 export const addNote = (note: INote) => (dispatch: any) => {
   dispatch({ type: types.ADD_NOTE, payload: note });
