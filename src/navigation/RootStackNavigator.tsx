@@ -8,12 +8,20 @@ import {
   NoteDetailScreen,
 } from "screens";
 import { routes } from "./route";
+import { COLORS } from "styles";
 
 const Stack = createStackNavigator();
 
 const RootStackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitle: "",
+        headerTransparent: true,
+        headerStyle: {
+          backgroundColor: COLORS.black,
+        },
+      }}>
       <Stack.Screen name={routes.HOMESCREEN} component={HomeScreen} />
       <Stack.Screen name={routes.NOTE_DETAIL} component={NoteDetailScreen} />
       <Stack.Screen name={routes.ADD_NOTE} component={AddNoteScreen} />
