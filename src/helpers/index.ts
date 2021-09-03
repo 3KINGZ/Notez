@@ -9,7 +9,7 @@ export const generateActions = (action: string) => {
   };
 };
 
-export const formatDate = (date: string) => {
+export const formatDate = (date: number) => {
   const newDate = new Date(date);
   const month = newDate.getMonth();
   const day = newDate.getDate();

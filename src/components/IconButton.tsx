@@ -1,13 +1,18 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet, StyleProp } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
 import { COLORS, SIZES } from "styles";
 
 interface IIconButton {
   name: string;
-  onPress: () => void;
-  style?: StyleProp;
+  onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
 }
 
 export const IconButton = ({ name, onPress, style }: IIconButton) => {

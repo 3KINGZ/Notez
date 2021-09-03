@@ -3,5 +3,5 @@ interface INote {
   title: string;
   body: string;
   color: string;
-  dateCreated: string;
+  dateCreated: number;
 }

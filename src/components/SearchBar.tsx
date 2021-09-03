@@ -31,6 +31,7 @@ export const SearchBar = ({ onExit, onChangeText }: ISearchBar) => {
           color: COLORS.white,
           paddingLeft: 12,
         }}
+        autoFocus
       />
     </View>
   );

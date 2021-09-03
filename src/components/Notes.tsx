@@ -9,8 +9,6 @@ const keyExtractor = (item: INote) => item.id;
 export const Notes = ({ notes }: { notes: INote[] }) => {
   return (
     <View>
-      <Text>Notes</Text>
-
       <MasonryList
         data={notes}
         numColumns={2}

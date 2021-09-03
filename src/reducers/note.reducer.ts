@@ -9,7 +9,7 @@ const initialState = {
     {
       id: "wer",
       title: "How to make your personal brand stand out online",
-      body: "lugard things",
+      body: "lugard things Id eiusmod nostrud ad dolore enim ad aliqua ipsum nulla ut qui fugiat do aute. Est aliqua eiusmod ullamco proident nisi duis labore esse incididunt duis laboris amet Lorem. Occaecat elit ipsum velit cillum aute in tempor eiusmod. Exercitation mollit nostrud velit sunt dolore Lorem ipsum aute ipsum pariatur dolor. Lorem et tempor et velit. Adipisicing eu adipisicing amet culpa voluptate labore consectetur ex aliquip occaecat anim. In enim Lorem consequat adipisicing nostrud sint fugiat esse reprehenderit proident ex ex sint. Labore cillum cupidatat pariatur officia quis aliquip culpa. Anim veniam officia anim esse dolore pariatur adipisicing incididunt deserunt nulla nisi. Officia amet ut proident excepteur duis labore. Consectetur exercitation aute proident quis deserunt adipisicing cillum dolore fugiat consectetur. Ipsum cillum est esse nisi quis eiusmod consectetur elit magna. Consectetur cupidatat do nisi adipisicing laborum. Duis pariatur cupidatat reprehenderit et elit magna tempor aliqua duis. ",
       color: COLORS.noteColor2,
       dateCreated: Date.now(),
     },
@@ -18,15 +18,111 @@ const initialState = {
       title:
         "How to make your personal brand stand out online brand stand out online brand stand out online",
       body: "lugard things",
-      color: COLORS.noteColor2,
+      color: COLORS.noteColor3,
       dateCreated: Date.now(),
     },
     {
       id: "wer2",
       title:
         "How to make your personal brand stand out online brand stand out online brand stand out online",
-      body: "lugard things",
-      color: COLORS.noteColor2,
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things check",
+      color: COLORS.noteColor4,
       dateCreated: Date.now(),
     },
   ],
