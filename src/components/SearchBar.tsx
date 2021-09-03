@@ -4,7 +4,12 @@ import { View, TextInput, StyleSheet } from "react-native";
 import { IconButton } from "components";
 import { COLORS } from "styles";
 
-export const SearchBar = ({ onExit }: any) => {
+interface ISearchBar {
+  onExit: () => void;
+  onChangeText: (text: string) => void;
+}
+
+export const SearchBar = ({ onExit, onChangeText }: ISearchBar) => {
   return (
     <View style={styles.container}>
       <IconButton
@@ -15,14 +20,16 @@ export const SearchBar = ({ onExit }: any) => {
       <TextInput
         placeholder="Search notes..."
         placeholderTextColor={COLORS.lightGrey}
+        onChangeText={onChangeText}
         style={{
           borderWidth: 1,
           borderColor: COLORS.lightGrey,
           flex: 1,
-          //   width: "90%",
           marginLeft: 5,
           borderRadius: 10,
           padding: 5,
+          color: COLORS.white,
+          paddingLeft: 12,
         }}
       />
     </View>
@@ -34,8 +41,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     marginVertical: 10,
-    // flex: 1,
     marginRight: 10,
-    backgroundColor: "red",
   },
 });
