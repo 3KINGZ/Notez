@@ -1,11 +1,16 @@
 /* eslint-disable react/display-name */
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
 import { IconButton, Notes, SearchBar } from "components";
 import { COLORS, FONTS, SIZES } from "styles";
 
 export const HomeScreen = ({ navigation }: any) => {
+  const { notes } = useSelector((state: State) => state.note);
+
+  const [notes2, setNotes2] = useState(notes);
+
   const [showSearch, setShowSearch] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -36,10 +41,19 @@ export const HomeScreen = ({ navigation }: any) => {
     });
   }, [navigation, showSearch]);
 
+  useEffect(() => {
+    setNotes2(
+      notes2.filter(
+        (note: INote) =>
+          note.title.includes(search) || note.body.includes(search),
+      ),
+    );
+  }, [search]);
+
   return (
     <View style={styles.container}>
       <Text style={{ color: "red" }}>HomeScreen</Text>
-      <Notes />
+      <Notes notes={notes2} />
     </View>
   );
 };

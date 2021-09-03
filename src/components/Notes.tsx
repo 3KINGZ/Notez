@@ -1,23 +1,21 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { View, Text } from "react-native";
 import { Note } from "./Note";
+import MasonryList from "@react-native-seoul/masonry-list";
 
 const renderItem = ({ item }: { item: INote }) => <Note note={item} />;
 const keyExtractor = (item: INote) => item.id;
 
-export const Notes = () => {
-  const { notes } = useSelector((state: State) => state.note);
-
+export const Notes = ({ notes }: { notes: INote[] }) => {
   return (
     <View>
       <Text>Notes</Text>
 
-      <FlatList
+      <MasonryList
         data={notes}
         numColumns={2}
         renderItem={renderItem}
-        keyExtractor={keyExtractor}
+        // keyExtractor={keyExtractor}
       />
     </View>
   );

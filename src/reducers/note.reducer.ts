@@ -1,8 +1,35 @@
+import { COLORS } from "styles";
 import * as types from "../actions/types";
+
+const date = new Date();
 
 const initialState = {
   loading: false,
-  notes: [],
+  notes: [
+    {
+      id: "wer",
+      title: "How to make your personal brand stand out online",
+      body: "lugard things",
+      color: COLORS.noteColor2,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things",
+      color: COLORS.noteColor2,
+      dateCreated: Date.now(),
+    },
+    {
+      id: "wer2",
+      title:
+        "How to make your personal brand stand out online brand stand out online brand stand out online",
+      body: "lugard things",
+      color: COLORS.noteColor2,
+      dateCreated: Date.now(),
+    },
+  ],
 };
 
 export const noteReducer = (
