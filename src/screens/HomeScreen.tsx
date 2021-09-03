@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
-import React, { useEffect, useLayoutEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useLayoutEffect } from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-import { Notes } from "components";
+import { IconButton, Notes, SearchBar } from "components";
 import { COLORS, FONTS, SIZES } from "styles";
 
 //feather - search,edit,plus,chevron
@@ -10,23 +10,31 @@ import { COLORS, FONTS, SIZES } from "styles";
 export const HomeScreen = ({ navigation }: any) => {
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => (
-        <Text
-          style={{
-            color: COLORS.white,
-            fontSize: SIZES.xl,
-            paddingLeft: 10,
-            fontFamily: FONTS.RobotoBold,
-          }}>
-          Notes
-        </Text>
-      ),
+      headerMode: "screen",
+
+      // headerLeft: () => (
+      //   <Text
+      //     style={{
+      //       color: COLORS.white,
+      //       fontSize: SIZES.xxl,
+      //       paddingLeft: 10,
+      //       fontFamily: FONTS.RobotoBold,
+      //     }}>
+      //     Notes
+      //   </Text>
+      //   // <SearchBar />
+      // ),
+      // headerRight: () => (
+      //   <IconButton name="search" style={{ marginRight: 10 }} />
+      // ),
+      header: () => <SearchBar />,
     });
   }, [navigation]);
 
   return (
     <View style={styles.container}>
-      <Text>HomeScreen</Text>
+      {/* <SearchBar /> */}
+      <Text style={{ color: "red" }}>HomeScreen</Text>
       <Notes />
     </View>
   );

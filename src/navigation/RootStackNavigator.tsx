@@ -17,9 +17,11 @@ const RootStackNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerTitle: "",
-        headerTransparent: true,
+        // headerTransparent: true,
         headerStyle: {
           backgroundColor: COLORS.black,
+          shadowOpacity: 0,
+          elevation: 0,
         },
       }}>
       <Stack.Screen name={routes.HOMESCREEN} component={HomeScreen} />
