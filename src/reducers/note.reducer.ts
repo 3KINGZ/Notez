@@ -38,6 +38,9 @@ export const noteReducer = (
 
     case types.SYNC_NOTES.FAILURE:
       return { ...state, loading: false };
+
+    default:
+      return state;
   }
 };
 

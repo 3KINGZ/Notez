@@ -1,16 +1,21 @@
 import "react-native-gesture-handler";
 import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 
 import RootStackNavigator from "navigation/RootStackNavigator";
 import { storeObjectValue } from "utils/storage";
+import store from "store";
 
 const App = () => {
   const { notes } = useSelector((state: any) => state.note);
 
   useEffect(() => {
-    async () => await storeObjectValue("notes", notes);
+    const saveNote = async () => {
+      await storeObjectValue("notes", notes);
+    };
+
+    saveNote();
   }, [notes]);
 
   return (
