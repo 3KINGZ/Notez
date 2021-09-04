@@ -28,3 +28,11 @@ export const setNoteToDelete = (id: string) => async (dispatch: any) => {
 export const deleteNotes = () => async (dispatch: any) => {
   dispatch({ type: types.DELETE_NOTES });
 };
+
+export const selectAllNotes = () => async (dispatch: any) => {
+  dispatch({ type: types.SELECT_ALL });
+};
+
+export const unSelectAllNotes = () => async (dispatch: any) => {
+  dispatch({ type: types.UNSELECT_ALL });
+};

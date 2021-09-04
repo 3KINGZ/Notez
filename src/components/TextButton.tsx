@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   StyleProp,
-  ViewStyle,
+  TextStyle,
 } from "react-native";
 
 import { COLORS, FONTS, SIZES } from "styles";
@@ -13,7 +13,7 @@ interface ITextButton {
   label: string;
   onPress: () => void;
   disabled?: boolean;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<TextStyle>;
 }
 
 export const TextButton = ({

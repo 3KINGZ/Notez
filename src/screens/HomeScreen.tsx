@@ -1,13 +1,30 @@
 /* eslint-disable react/display-name */
 import React, { useLayoutEffect, useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Icon from "react-native-vector-icons/Feather";
 
-import { IconButton, Notes, SearchBar, TextButton } from "components";
+import {
+  CheckButton,
+  IconButton,
+  Notes,
+  SearchBar,
+  TextButton,
+} from "components";
 import { COLORS, FONTS, SIZES } from "styles";
 import { routes } from "navigation/route";
-import { deleteNotes, toggleDelete } from "actions/note.action";
+import {
+  deleteNotes,
+  selectAllNotes,
+  toggleDelete,
+  unSelectAllNotes,
+} from "actions/note.action";
 
 export const HomeScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
@@ -18,6 +35,7 @@ export const HomeScreen = ({ navigation }: any) => {
   const [notes2, setNotes2] = useState(notes);
   const [showSearch, setShowSearch] = useState(false);
   const [search, setSearch] = useState("");
+  const [selectAll, setSelectAll] = useState(false);
 
   const closeSearch = () => {
     setSearch("");
@@ -33,6 +51,15 @@ export const HomeScreen = ({ navigation }: any) => {
     _toggleDelete();
   };
 
+  const toggleSelectAll = () => {
+    if (!selectAll) {
+      dispatch(selectAllNotes());
+    } else {
+      dispatch(unSelectAllNotes());
+    }
+    setSelectAll(!selectAll);
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerMode: "screen",
@@ -41,6 +68,23 @@ export const HomeScreen = ({ navigation }: any) => {
         showSearch ? (
           <View style={options.headerStyle}>
             <SearchBar onExit={closeSearch} onChangeText={setSearch} />
+          </View>
+        ) : deleteMode ? (
+          <View style={[options.headerStyle, styles.deleteModeHeaderContainer]}>
+            <TouchableWithoutFeedback onPress={toggleSelectAll}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <CheckButton checked={selectAll} />
+                <TextButton
+                  label="Select All"
+                  style={{ marginLeft: 5 }}
+                  onPress={toggleSelectAll}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+
+            <Text style={styles.notesToDeleteLengthText}>
+              {notesToDelete.length} selected
+            </Text>
           </View>
         ) : (
           <View style={[styles.titleContainer, options.headerStyle]}>
@@ -64,7 +108,7 @@ export const HomeScreen = ({ navigation }: any) => {
           </View>
         ),
     });
-  }, [navigation, showSearch]);
+  }, [navigation, showSearch, deleteMode, notesToDelete, selectAll]);
 
   useEffect(() => {
     const searchKeyWord = search.toLowerCase();
@@ -83,7 +127,7 @@ export const HomeScreen = ({ navigation }: any) => {
         <Notes notes={notes2} />
       </View>
 
-      {!deleteMode ? (
+      {!deleteMode && !showSearch ? (
         <TouchableOpacity
           style={styles.addNoteButton}
           onPress={() => navigation.navigate(routes.ADD_NOTE)}>
@@ -174,5 +218,17 @@ const styles = StyleSheet.create({
   },
   customTextButton: {
     marginLeft: 10,
+  },
+  deleteModeHeaderContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    alignItems: "center",
+  },
+  notesToDeleteLengthText: {
+    color: COLORS.white,
+    fontFamily: FONTS.RobotoMedium,
+    fontSize: SIZES.m,
   },
 });

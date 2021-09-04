@@ -125,6 +125,18 @@ export const noteReducer = (
         ),
       };
 
+    case types.SELECT_ALL:
+      return {
+        ...state,
+        notesToDelete: state.notes.map(note => note.id),
+      };
+
+    case types.UNSELECT_ALL:
+      return {
+        ...state,
+        notesToDelete: [],
+      };
+
     default:
       return state;
   }

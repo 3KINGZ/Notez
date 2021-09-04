@@ -5,3 +5,5 @@ export const SYNC_NOTES = "SYNC NOTES";
 export const TOGGLE_DELETE = "TOGGLE DELETE";
 export const SET_NOTE_TO_DELETE = "SET NOTE TO DELETE";
 export const DELETE_NOTES = "DELETE NOTES";
+export const SELECT_ALL = "SELECT ALL";
+export const UNSELECT_ALL = "UNSELECT ALL";
