@@ -10,13 +10,12 @@ import { routes } from "navigation/route";
 import { deleteNotes, toggleDelete } from "actions/note.action";
 
 export const HomeScreen = ({ navigation }: any) => {
+  const dispatch = useDispatch();
   const { deleteMode, notes, notesToDelete } = useSelector(
     (state: any) => state.note,
   );
-  const dispatch = useDispatch();
 
   const [notes2, setNotes2] = useState(notes);
-
   const [showSearch, setShowSearch] = useState(false);
   const [search, setSearch] = useState("");
 
