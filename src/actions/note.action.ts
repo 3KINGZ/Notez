@@ -2,6 +2,7 @@ import * as types from "./types";
 import { getObjectValue } from "./../utils/storage/get";
 
 export const addNote = (note: INote) => (dispatch: any) => {
+  console.log("frm action", note);
   dispatch({ type: types.ADD_NOTE, payload: note });
 };
 
@@ -17,6 +18,8 @@ export const syncNotes = () => async (dispatch: any) => {
   dispatch({ type: types.SYNC_NOTES.REQUEST });
 
   const notes = await getObjectValue("notes");
+
+  console.log("ntss", notes);
 
   try {
     dispatch({ type: types.SYNC_NOTES.SUCCESS, payload: notes ? notes : [] });

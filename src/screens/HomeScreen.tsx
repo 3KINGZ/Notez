@@ -13,6 +13,8 @@ export const HomeScreen = ({ navigation }: any) => {
 
   const [notes2, setNotes2] = useState(notes);
 
+  console.log("hs", notes2);
+
   const [showSearch, setShowSearch] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -54,7 +56,7 @@ export const HomeScreen = ({ navigation }: any) => {
           note.body.toLowerCase().includes(searchKeyWord),
       ),
     );
-  }, [search]);
+  }, [search, notes]);
 
   return (
     <View style={styles.container}>

@@ -24,15 +24,15 @@ export const Note = ({ note }: { note: INote }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 15,
     borderRadius: 10,
     width: Dimensions.get("window").width / 2 - 20,
     margin: 10,
     minHeight: 50,
   },
   title: {
-    fontFamily: FONTS.RobotoMedium,
-    fontSize: SIZES.l,
+    fontFamily: FONTS.RobotoRegular,
+    fontSize: 24,
     color: COLORS.blackTextColor,
   },
   date: {
@@ -40,5 +40,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.s,
     color: COLORS.blackTextColor,
     opacity: 0.4,
+    alignSelf: "baseline",
   },
 });

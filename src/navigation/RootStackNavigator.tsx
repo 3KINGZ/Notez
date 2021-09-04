@@ -39,7 +39,19 @@ const RootStackNavigator = () => {
           ),
         })}
       />
-      <Stack.Screen name={routes.ADD_NOTE} component={AddNoteScreen} />
+      <Stack.Screen
+        name={routes.ADD_NOTE}
+        component={AddNoteScreen}
+        options={({ navigation }) => ({
+          headerLeft: () => (
+            <IconButton
+              name="chevron-left"
+              style={{ marginLeft: 10 }}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        })}
+      />
       <Stack.Screen name={routes.EDIT_NOTE} component={EditNoteScreen} />
     </Stack.Navigator>
   );

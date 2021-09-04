@@ -1,5 +1,5 @@
 interface INote {
-  id: string;
+  id: any;
   title: string;
   body: string;
   color: string;

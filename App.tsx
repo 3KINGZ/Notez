@@ -1,30 +1,47 @@
 import "react-native-gesture-handler";
 import React, { useEffect } from "react";
-import { StatusBar } from "react-native";
+import { View, ActivityIndicator, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import RootStackNavigator from "navigation/RootStackNavigator";
 import { storeObjectValue } from "utils/storage";
 import { COLORS } from "styles";
+import { syncNotes } from "actions/note.action";
 
 const App = () => {
-  const { notes } = useSelector((state: any) => state.note);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const saveNote = async () => {
-      await storeObjectValue("notes", notes);
-    };
+  const { notes, loading } = useSelector((state: any) => state.note);
 
-    saveNote();
-  }, [notes]);
+  // useEffect(() => {
+  //   const saveNote = async () => {
+  //     console.log("saving notes");
+  //     console.log("snts", notes);
+  //     await storeObjectValue("notes", notes);
+  //   };
+
+  //   saveNote();
+  // }, [notes]);
+
+  // useEffect(() => {
+  //   dispatch(syncNotes());
+  // }, []);
 
   return (
     <>
-      <StatusBar backgroundColor={COLORS.black} barStyle="light-content" />
-      <NavigationContainer>
-        <RootStackNavigator />
-      </NavigationContainer>
+      {loading ? (
+        <View>
+          <ActivityIndicator />
+        </View>
+      ) : (
+        <>
+          <StatusBar backgroundColor={COLORS.black} barStyle="light-content" />
+          <NavigationContainer>
+            <RootStackNavigator />
+          </NavigationContainer>
+        </>
+      )}
     </>
   );
 };
