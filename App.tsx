@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useEffect, useState } from "react";
-import { View, ActivityIndicator, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -18,17 +18,12 @@ const App = () => {
 
   useEffect(() => {
     const getNotes = async () => {
-      if (loading) {
-        return;
-      }
       setLoading(true);
       try {
         const notesCache = await getObjectValue("notes");
         dispatch(syncNotes(notesCache));
         setLoading(false);
       } catch (error) {
-        //err
-        console.log("errr");
         setLoading(false);
       }
     };
@@ -48,18 +43,10 @@ const App = () => {
 
   return (
     <>
-      {loading ? (
-        <View>
-          <ActivityIndicator />
-        </View>
-      ) : (
-        <>
-          <StatusBar backgroundColor={COLORS.black} barStyle="light-content" />
-          <NavigationContainer>
-            <RootStackNavigator />
-          </NavigationContainer>
-        </>
-      )}
+      <StatusBar backgroundColor={COLORS.black} barStyle="light-content" />
+      <NavigationContainer>
+        <RootStackNavigator />
+      </NavigationContainer>
     </>
   );
 };

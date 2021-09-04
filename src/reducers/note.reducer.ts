@@ -2,11 +2,18 @@ import * as types from "../actions/types";
 
 const initialState = {
   loading: false,
+  deleteMode: false,
   notes: [],
+  notesToDelete: [],
 };
 
 export const noteReducer = (
-  state: { loading: boolean; notes: INote[] } = initialState,
+  state: {
+    loading: boolean;
+    deleteMode: boolean;
+    notes: INote[];
+    notesToDelete: string[];
+  } = initialState,
   action: { type: string; payload: any },
 ) => {
   const { type, payload } = action;
@@ -21,9 +28,6 @@ export const noteReducer = (
         notes: state.notes.filter((note: INote) => note.id !== payload),
       };
 
-    case types.SYNC_NOTES.REQUEST:
-      return { ...state, loading: true };
-
     case types.EDIT_NOTE: {
       const id = payload.id;
       const note = payload.note;
@@ -33,13 +37,33 @@ export const noteReducer = (
       return { ...state, notes: [...notes] };
     }
 
-    case types.SYNC_NOTES.SUCCESS: {
-      console.log("snts redu", payload);
+    case types.SYNC_NOTES:
       return { ...state, loading: false, notes: [...payload, ...state.notes] };
+
+    case types.TOGGLE_DELETE:
+      return {
+        ...state,
+        deleteMode: !state.deleteMode,
+        notesToDelete: state.deleteMode ? [] : state.notesToDelete,
+      };
+
+    case types.SET_NOTE_TO_DELETE: {
+      const isIncluded = state.notesToDelete.includes(payload);
+      return {
+        ...state,
+        notesToDelete: isIncluded
+          ? state.notesToDelete.filter(note => note !== payload)
+          : [payload, ...state.notesToDelete],
+      };
     }
 
-    case types.SYNC_NOTES.FAILURE:
-      return { ...state, loading: false };
+    case types.DELETE_NOTES:
+      return {
+        ...state,
+        notes: state.notes.filter(
+          note => !state.notesToDelete.includes(note.id),
+        ),
+      };
 
     default:
       return state;

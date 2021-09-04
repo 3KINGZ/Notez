@@ -5,3 +5,5 @@ export * from "./SearchBar";
 export * from "./SearchBar";
 export * from "./ColorInput";
 export * from "./Button";
+export * from "./CheckButton";
+export * from "./TextButton";

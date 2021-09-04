@@ -1,15 +1,19 @@
 /* eslint-disable react/display-name */
 import React, { useLayoutEffect, useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Icon from "react-native-vector-icons/Feather";
 
-import { IconButton, Notes, SearchBar } from "components";
+import { IconButton, Notes, SearchBar, TextButton } from "components";
 import { COLORS, FONTS, SIZES } from "styles";
 import { routes } from "navigation/route";
+import { deleteNotes, toggleDelete } from "actions/note.action";
 
 export const HomeScreen = ({ navigation }: any) => {
-  const { notes } = useSelector((state: State) => state.note);
+  const { deleteMode, notes, notesToDelete } = useSelector(
+    (state: any) => state.note,
+  );
+  const dispatch = useDispatch();
 
   const [notes2, setNotes2] = useState(notes);
 
@@ -19,6 +23,15 @@ export const HomeScreen = ({ navigation }: any) => {
   const closeSearch = () => {
     setSearch("");
     setShowSearch(false);
+  };
+
+  const _toggleDelete = () => {
+    dispatch(toggleDelete());
+  };
+
+  const _deleteNotes = () => {
+    dispatch(deleteNotes());
+    _toggleDelete();
   };
 
   useLayoutEffect(() => {
@@ -35,11 +48,20 @@ export const HomeScreen = ({ navigation }: any) => {
             <View>
               <Text style={styles.title}>Notes</Text>
             </View>
-            <IconButton
-              name="search"
-              style={{ marginRight: 10 }}
-              onPress={() => setShowSearch(true)}
-            />
+
+            <View style={styles.headerButtonContainer}>
+              <IconButton
+                name="trash-2"
+                style={{ marginRight: 10 }}
+                onPress={_toggleDelete}
+              />
+
+              <IconButton
+                name="search"
+                style={{ marginRight: 10 }}
+                onPress={() => setShowSearch(true)}
+              />
+            </View>
           </View>
         ),
     });
@@ -58,13 +80,35 @@ export const HomeScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      <Notes notes={notes2} />
+      <View style={{ flex: 1 }}>
+        <Notes notes={notes2} />
+      </View>
 
-      <TouchableOpacity
-        style={styles.addNoteButton}
-        onPress={() => navigation.navigate(routes.ADD_NOTE)}>
-        <Icon name="plus" color="white" size={SIZES.xl} />
-      </TouchableOpacity>
+      {!deleteMode ? (
+        <TouchableOpacity
+          style={styles.addNoteButton}
+          onPress={() => navigation.navigate(routes.ADD_NOTE)}>
+          <Icon name="plus" color="white" size={SIZES.xl} />
+        </TouchableOpacity>
+      ) : null}
+
+      {deleteMode ? (
+        <View style={styles.textButtonContainer}>
+          <View style={styles.mainTextButtonContainer}>
+            <TextButton
+              label="cancel"
+              style={styles.customTextButton}
+              onPress={_toggleDelete}
+            />
+            <TextButton
+              label="delete"
+              style={styles.customTextButton}
+              disabled={!notesToDelete.length}
+              onPress={_deleteNotes}
+            />
+          </View>
+        </View>
+      ) : null}
     </View>
   );
 };
@@ -105,5 +149,31 @@ const styles = StyleSheet.create({
     // shadowRadius: 3.84,
 
     // elevation: 5,
+  },
+  headerButtonContainer: {
+    flexDirection: "row",
+    marginLeft: 5,
+  },
+  textButtonContainer: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+
+    elevation: 1,
+
+    width: "100%",
+    marginBottom: 10,
+  },
+  mainTextButtonContainer: {
+    flexDirection: "row",
+    alignSelf: "flex-end",
+    marginRight: 10,
+  },
+  customTextButton: {
+    marginLeft: 10,
   },
 });
