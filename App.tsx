@@ -1,32 +1,50 @@
 import "react-native-gesture-handler";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, ActivityIndicator, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { useSelector, useDispatch } from "react-redux";
 
 import RootStackNavigator from "navigation/RootStackNavigator";
-import { storeObjectValue } from "utils/storage";
+import { storeObjectValue, getObjectValue } from "utils/storage";
 import { COLORS } from "styles";
 import { syncNotes } from "actions/note.action";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const { notes, loading } = useSelector((state: any) => state.note);
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const saveNote = async () => {
-  //     console.log("saving notes");
-  //     console.log("snts", notes);
-  //     await storeObjectValue("notes", notes);
-  //   };
+  const { notes } = useSelector((state: any) => state.note);
 
-  //   saveNote();
-  // }, [notes]);
+  useEffect(() => {
+    const getNotes = async () => {
+      if (loading) {
+        return;
+      }
+      setLoading(true);
+      try {
+        const notesCache = await getObjectValue("notes");
+        dispatch(syncNotes(notesCache));
+        setLoading(false);
+      } catch (error) {
+        //err
+        console.log("errr");
+        setLoading(false);
+      }
+    };
 
-  // useEffect(() => {
-  //   dispatch(syncNotes());
-  // }, []);
+    getNotes();
+  }, []);
+
+  useEffect(() => {
+    const saveNote = () => {
+      if (!loading) {
+        storeObjectValue("notes", notes);
+      }
+    };
+
+    saveNote();
+  }, [notes]);
 
   return (
     <>

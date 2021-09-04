@@ -13,8 +13,6 @@ export const HomeScreen = ({ navigation }: any) => {
 
   const [notes2, setNotes2] = useState(notes);
 
-  console.log("hs", notes2);
-
   const [showSearch, setShowSearch] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -97,5 +95,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     right: 15,
+
+    // shadowColor: COLORS.lightGrey,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+
+    // elevation: 5,
   },
 });
