@@ -1,9 +1,69 @@
+import { COLORS } from "styles";
+import uuid from "react-native-uuid";
 import * as types from "../actions/types";
 
 const initialState = {
   loading: false,
   deleteMode: false,
-  notes: [],
+  notes: [
+    {
+      id: uuid.v4(),
+      title: "How to make your personal brand stand out online",
+      body: "online",
+      color: COLORS.noteColor1,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title: "Beautiful weather app UI concepts we wish existed",
+      body: "online",
+      color: COLORS.noteColor2,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title: "10 excellent font pairing tools for designers",
+      body: "online",
+      color: COLORS.noteColor3,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title:
+        "Spotify's Reema Bhagat on product design, music and the key to a happy career",
+      body: "online",
+      color: COLORS.noteColor4,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title: "12 eye-catching mobile wallpaper",
+      body: "online",
+      color: COLORS.noteColor5,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title: "eye-catching mobile wallpaper",
+      body: "online",
+      color: COLORS.noteColor6,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title: "How to make your personal brand stand out online",
+      body: "online",
+      color: COLORS.noteColor7,
+      dateCreated: Date.now(),
+    },
+    {
+      id: uuid.v4(),
+      title: "Design For Good: Join The face Mask Challenge",
+      body: "online",
+      color: COLORS.noteColor1,
+      dateCreated: Date.now(),
+    },
+  ],
   notesToDelete: [],
 };
 

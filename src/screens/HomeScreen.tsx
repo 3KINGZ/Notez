@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     elevation: 1,
 
     width: "100%",
-    marginBottom: 10,
+    marginVertical: 10,
   },
   mainTextButtonContainer: {
     flexDirection: "row",

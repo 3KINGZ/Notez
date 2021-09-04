@@ -19,7 +19,7 @@ export const SearchBar = ({ onExit, onChangeText }: ISearchBar) => {
       />
       <TextInput
         placeholder="Search notes..."
-        placeholderTextColor={COLORS.lightGrey}
+        placeholderTextColor={COLORS.white}
         onChangeText={onChangeText}
         style={{
           borderWidth: 1,
