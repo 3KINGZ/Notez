@@ -13,7 +13,7 @@ import { formatDate } from "helpers";
 import { routes } from "navigation/route";
 import { COLORS, FONTS, SIZES } from "styles";
 import { CheckButton } from "components";
-import { setNoteToDelete } from "actions/note.action";
+import { setNoteToDelete, toggleDelete } from "actions/note.action";
 
 export const Note = ({ note }: { note: INote }) => {
   const navigation = useNavigation();
@@ -32,10 +32,15 @@ export const Note = ({ note }: { note: INote }) => {
     }
   };
 
+  const onLongPress = () => {
+    dispatch(toggleDelete());
+    dispatch(setNoteToDelete(id));
+  };
+
   const checked = notesToDelete.includes(id);
 
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback onPress={onPress} onLongPress={onLongPress}>
       <View style={[styles.container, { backgroundColor: color }]}>
         {deleteMode ? <CheckButton checked={checked} /> : null}
         <Text style={styles.title}>{title}</Text>

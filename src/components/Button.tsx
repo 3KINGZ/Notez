@@ -6,7 +6,6 @@ import {
   Text,
   ViewStyle,
 } from "react-native";
-import Icon from "react-native-vector-icons/Feather";
 
 import { COLORS, FONTS, SIZES } from "styles";
 
