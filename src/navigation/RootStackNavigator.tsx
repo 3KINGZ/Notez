@@ -2,12 +2,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import {
-  AddNoteScreen,
-  EditNoteScreen,
-  HomeScreen,
-  NoteDetailScreen,
-} from "screens";
+import { AddNoteScreen, HomeScreen, NoteDetailScreen } from "screens";
 import { routes } from "./route";
 import { COLORS } from "styles";
 import { IconButton } from "components";
@@ -52,7 +47,6 @@ const RootStackNavigator = () => {
           ),
         })}
       />
-      <Stack.Screen name={routes.EDIT_NOTE} component={EditNoteScreen} />
     </Stack.Navigator>
   );
 };
